@@ -2,7 +2,8 @@
 #define DLL_H
 #include <stddef.h>
 
-#define is_null(X) (X == NULL)
+#define IF_NULL(X) if(X == NULL) { printf("NULL pointer\n"); return; }
+#define is_null(X) X == NULL
 
 typedef struct node{
     struct node* next;
@@ -12,22 +13,22 @@ typedef struct node{
 
 typedef struct {
     node *head;
+    node *tail;
     unsigned long long data_size;
+    int list_size;
 } dll;
 
 dll* create_list(size_t);
 void delete_list(dll*);
-void insert_element_at_beginning(dll*, void*);
-void insert_element_at_ending(dll*, void*);
-void insert_element_before_cursor(dll*, void*, node**);
-void insert_element_after_cursor(dll*, void*, node**);
+node* insert_element_at_beginning(dll*, void*);
+node* insert_element_at_ending(dll*, void*);
+node* insert_element_at_position(dll*, void*, int);
 void remove_element_at_beginning(dll*);
 void remove_element_at_ending(dll*);
-void remove_element_at_cursor(dll*, node**);
-void search_element_from_cursor(dll*, void*, node**);
-void point_cursor_to(dll*, node***, )
+void remove_element_at_position(dll*, int);
+node* search_element_from_position(dll*, void*, int, int (*)(void*, void*));
 
-void print_list(dll*, void (*print_element)(void*));
+void print_list(dll*, void (*)(void*));
 
 
 #endif
