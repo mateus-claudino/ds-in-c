@@ -1,2 +1,2 @@
 # ds-in-c
-just self-made fun code of some data structures in c :)
+just having some fun learning data structures and implementing them in c. :)
